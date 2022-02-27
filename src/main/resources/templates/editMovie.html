@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Disney</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> Disney </a>
+          <img src="img/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/listPersonajes/}">Characters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/listMovies/}">Movies</a>
+                </li>
+            </ul>
+          </div>
+
+
+          <!-- AVATAR NAVBAR -->
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary btn-sm" th:href="@{/usuario}" role="button">User</a>
+          </div>
+          
+        </div>
+      </nav>
+
+      
+    <!-- MOVIE TO EDIT -->
+      <div class="container">
+        <div class="row">
+            <form th:action="@{/editMovie/} + ${movie.id}" method="POST" class="formulario" enctype="multipart/form-data">
+                <div class="col-6">
+                    <div class="form-group" id="archive">
+                        <label for="image">Select a picture</label>
+                        <br>
+                        <input type="file" class="form-control-file text-nowrap" name="image" id="image">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input th:value="${movie.title}" type="text" class="form-control" placeholder="Movie title" name="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input th:value="${movie.gender}" type="text" class="form-control" placeholder="Gender movie" name="gender" id="gender">
+                    </div>
+                    <div class="form-group">
+                        <label for="creationDate">Creation date</label>
+                        <input th:value="${movie.creationDate}" type="date" class="form-control" placeholder="Creation date" name="creationDate" id="creationDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="qualification">Qualification</label>
+                        <input th:value="${movie.qualification}" type="number" class="form-control" placeholder="Qualification" name="qualification" id="qualification">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <!-- LIST CHARACTERS ASSOSIATED -->
+                    <div class="col-6">
+                        <h3>Insert characters:</h3>
+                        <br>
+
+                        <select type="number" name="idPersonaje" class="form-select" aria-label="Select">
+                            <option selected>Select your character</option>
+                            <option th:each="personaje : ${listPersonajes}" th:value="${personaje.id}" th:text="${personaje.name}">One</option>
+                        </select>
+
+                    </div>
+                    <div class="col-6"></div>
+                </div>
+                <br>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <input class="btn btn-primary" type="submit" value="Save">
+                </div>
+            </form>
+        </div>
+
+      </div>
+
+
+      <!-- FOOTER -->
+      <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
+      
+          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+      
+          <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+          </ul>
+        </footer>
+      </div>
+
+  <script src="bootstrap.bundle.min.js"></script>
+</body>
+</html>

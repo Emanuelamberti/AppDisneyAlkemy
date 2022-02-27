@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Disney</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="img/logo.jpg" alt="">
+            </div>
+            <div class="col">
+                <div class="text-end">
+                    <img src="img/logo.jpg" width="48" alt="">
+                </div>
+                <h2 class="fw-bold text-center pt-5 mb-5">Welcome to this App</h2>
+                <!-- LOGIN -->
+                <form th:action="@{/register}" method="POST">
+                    <div class="mb-4">
+                        <label for="username" class="form-label">UserName</label>
+                        <input id="username" type="text" class="form-control" name="username">
+                    </div>
+                    <div class="mb-4">
+                        <label for="encrypted1" class="form-label">Password</label>
+                        <input id="encrypted1" type="password" class="form-control" name="encrypted1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="encrypted2" class="form-label">Confirm Password</label>
+                        <input id="encrypted2" type="password" class="form-control" name="encrypted2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email</label>
+                        <input id="email" type="email" class="form-control" name="email">
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group" id="archive">
+                            <label for="profilePicture">Select a picture</label>
+                            <br>
+                            <input type="file" class="form-control-file text-nowrap" name="profilePicture" id="profilePicture">
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid" >
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+  <script src="bootstrap.bundle.min.js"></script>
+</body>
+</html>
